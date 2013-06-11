@@ -25,6 +25,15 @@ describe User do
   it { should respond_to(:authenticate) }
 
   it { should be_valid }
+
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
   
   describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
