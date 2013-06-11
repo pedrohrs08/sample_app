@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-    def create
+  def create
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "Welcome to the Sample App!"
@@ -15,5 +15,9 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 end
