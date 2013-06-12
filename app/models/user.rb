@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   has_secure_password
+  has_many :microposts
+  
   validates_confirmation_of :password
 
   validates :name, presence: true, length: { maximum: 50 }
